@@ -30,7 +30,7 @@ defmodule TcpApp.Client do
   end
   
   def print_msg_from_stream(stream) do
-    {:ok, header, _rest} = IO.binread(stream, Header.header_size) |> Header.parse
+    header = IO.binread(stream, Header.header_size) |> Header.parse
     print_header(header)
 
     IO.binread(stream, header[:payload_size]) 

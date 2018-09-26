@@ -9,11 +9,9 @@ defmodule TcpApp.Protocol.Header do
 	   flags        :: 32-big,
 	   payload_size :: 32-little,
 	   rest         :: binary>> <- binary do
-      {:ok,
-       [type: type,
-        flags: flags,
-        payload_size: payload_size],
-       rest}
+      [type: type,
+       flags: flags,
+       payload_size: payload_size]
     end
   end
 end
