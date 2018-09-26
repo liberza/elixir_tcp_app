@@ -8,9 +8,8 @@ defmodule TcpApp.Type do
     # Example message types
     0001 => :client_server_hello,
     0002 => :server_client_hello,
-    0003 => :msg_just_a_string,
-    0004 => :ping,
-    0005 => :pong
+    0003 => :ping,
+    0004 => :pong
 
     # add more types here as needed
   }
