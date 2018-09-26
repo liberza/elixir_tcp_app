@@ -1,8 +1,5 @@
 defmodule TcpApp.Type do
-  # TODO: write a macro to directly map the integer types to each
-  # format in TcpApp.Format, for a speed boost.
-  # Right now we translate from message ID -> ID atom -> format key,
-  # and we could actually just go message ID -> format key.
+  alias TcpApp.Format
 
   @msg_types %{
     # Example message types
@@ -19,11 +16,16 @@ defmodule TcpApp.Type do
     Map.get(@msg_types, value)
   end
 
-  # Atom-to-number
   for {value, name} <- @msg_types do 
+    # Atom-to-number
     def encode(unquote(name)) do
       unquote(value)
     end 
+
+    # Number-to-format
+    def get_format(unquote(value)) do
+      Format.get(unquote(name))
+    end
   end
 
 end

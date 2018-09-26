@@ -1,5 +1,5 @@
 defmodule TcpApp.Client do
-  alias TcpApp.{Format, Type}
+  alias TcpApp.{Type}
   alias TcpApp.Protocol.{Header, Payload}
 
   def try_it() do
@@ -13,7 +13,7 @@ defmodule TcpApp.Client do
     print_header(header)
 
     IO.binread(stream, header[:payload_size]) 
-    |> Payload.parse(Type.decode(header.type), &Format.get/1)
+    |> Payload.parse(header.type, &Type.get_format/1)
     |> print_payload()
 
     stream
