@@ -3,6 +3,7 @@ defmodule TcpApp.Client do
   alias TcpApp.Protocol.{Header, Payload}
 
   # A test of our parser. Build a message manually, then parse & print it.
+  # This will create a :server_client_hello message.
   def try_it() do
     payload =
       <<
