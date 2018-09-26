@@ -16,13 +16,14 @@ defmodule TcpApp.Type do
     Map.get(@msg_types, value)
   end
 
+  # Use macros to generate some useful functions.
   for {value, name} <- @msg_types do 
     # Atom-to-number
     def encode(unquote(name)) do
       unquote(value)
     end 
 
-    # Number-to-format
+    # Number-to-format - using this directly will speed up parsing
     def get_format(unquote(value)) do
       Format.get(unquote(name))
     end
